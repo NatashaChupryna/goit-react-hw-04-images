@@ -103,11 +103,11 @@ export const App = () => {
       }
 
       try {
-        console.log('images -', images)
+        // console.log('images -', images)
         
         setIsLoading(true);
         const img = await getImage(searchQuery, page);
-        console.log('результат фетч -', img)
+        // console.log('результат фетч -', img)
         if (!img) {
           throw new Error();
         }

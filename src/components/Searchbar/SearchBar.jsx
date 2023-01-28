@@ -51,30 +51,12 @@ import {
 // }
 
 
-// ХУКИ!
-export const SearchBar = ({onSubmit}) =>{
-const [searchQuery, setSearchQuery] = useState('')
 
-
-const  handleQueryChange = event => {
-  setSearchQuery(event.currentTarget.value.toLowerCase())
-};
-
-const handleSubmit = event => {
-  event.preventDefault();
-  onSubmit(searchQuery);
-  if (searchQuery === '') {
-    toast.error('Please, enter your query', {
-      duration: 2000,
-    });
-    return;
-  }
-  event.target.reset();
-};
+export const SearchBar = ({onSubmit, onQueryHandler}) =>{
 
 return (
   <Searchbar>
-    <SearchForm onSubmit={handleSubmit}>
+    <SearchForm onSubmit={onSubmit}>
       <SearchFormButton type="submit">
         &#128269;
       </SearchFormButton>
@@ -83,7 +65,7 @@ return (
         type="text"
         autocomplete="off"
         placeholder="Search images and photos"
-        onChange={handleQueryChange}
+        onChange={onQueryHandler}
       />
     </SearchForm>
   </Searchbar>

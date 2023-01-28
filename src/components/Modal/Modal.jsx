@@ -9,16 +9,23 @@ export const Modal = ({ srcImg, onClose }) => {
     useEffect(() => {
     function handleKeyD(event) {
       if (event.code === 'Escape') {
-        onClose();}}
-
+        onClose();}
+      }
+     
     window.addEventListener('keydown', handleKeyD);
 
     return () => {
       window.removeEventListener('keydown', handleKeyD);};
     },[onClose]);
 
+    const  handleBackdropClick = event => {      
+      if (event.currentTarget === event.target) {
+        onClose()
+      }
+ }
+
   return createPortal(
-    <Backdrop>
+    <Backdrop onClick={handleBackdropClick}>
       <ModalDiv className="modal">
         <img src={srcImg} alt=""/>
       </ModalDiv>

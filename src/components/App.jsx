@@ -1,5 +1,5 @@
-import {PureComponent, useState, useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
+import {useState, useEffect } from 'react';
+import { Toaster, toast } from 'react-hot-toast';
 import { StyledApp } from './App.styled';
 import { SearchBar } from './Searchbar/SearchBar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -122,7 +122,7 @@ export const App = () => {
     }
 
     fetchImg();
-  }, [page, searchQuery]);
+  }, [page, searchQuery, images]);
 
   const handleFormSubmit = query => {
     setSearchQuery(query);
@@ -144,6 +144,7 @@ export const App = () => {
 
       {this.state.images.length > 0 &&  images.length < total && <Button onClick={onLoadButtonClick} />}
 
+{error &&  toast.error('We don`t have pictures for this request. Please try another word')}
       <Toaster position="top-right" reverseOrder={false} />
     </StyledApp>
   );

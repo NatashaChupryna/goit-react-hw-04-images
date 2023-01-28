@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { StyledApp } from './App.styled';
 import { SearchBar } from './Searchbar/SearchBar';
@@ -42,34 +42,32 @@ export const App = () => {
     setSearchQuery(event.currentTarget.value.toLowerCase());
   };
 
-
   const handleFormSubmit = async event => {
     event.preventDefault();
     setImages([]);
     setPage(1);
-    if(searchQuery === ''){
-       toast.error('Please enter your request')
-       return
+    if (searchQuery === '') {
+      toast.error('Please enter your request');
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     const img = await getImage(searchQuery, page);
-    
+
     if (img.length) {
       setImages([...img]);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
-
 
   const onLoadButtonClick = async event => {
     setPage(prevState => prevState + 1);
-    if(searchQuery === ''){
-      return 
+    if (searchQuery === '') {
+      return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     const img = await getImage(searchQuery, page);
     setImages([...images, ...img]);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (

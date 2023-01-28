@@ -142,7 +142,7 @@ export const App = () => {
 
       {images && <ImageGallery images={images} />}
 
-      {this.state.images.length > 0 &&  images.length < total && <Button onClick={onLoadButtonClick} />}
+      {images.length > 0 &&  images.length < total && <Button onClick={onLoadButtonClick} />}
 
 {error &&  toast.error('We don`t have pictures for this request. Please try another word')}
       <Toaster position="top-right" reverseOrder={false} />

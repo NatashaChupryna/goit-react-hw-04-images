@@ -7,9 +7,10 @@ import {
 
 
 export const SearchBar = ({onSubmit, onQueryHandler}) =>{
+
 return (
   <Searchbar>
-    <SearchForm onSubmit={onSubmit}>
+    <SearchForm onSubmit={onSubmit} >
       <SearchFormButton type="submit">
         &#128269;
       </SearchFormButton>

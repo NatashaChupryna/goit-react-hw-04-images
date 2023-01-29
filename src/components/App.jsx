@@ -50,12 +50,18 @@ export const App = () => {
       toast.error('Please enter your request');
       return;
     }
+
     setIsLoading(true);
     const img = await getImage(searchQuery, page);
-
+    event.target.reset();
+    
+    if (!img) {
+      setIsLoading(false);
+    }
     if (img.length) {
       setImages([...img]);
     }
+
     setIsLoading(false);
   };
 
